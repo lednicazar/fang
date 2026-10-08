@@ -51,7 +51,7 @@ esphome:
 
             // Update nbs_time and text entity from persisted global
             if (!id(g_timezone).empty()) {
-              id(nbs_time).set_timezone(id(g_timezone).c_str());
+              # id(nbs_time).set_timezone(id(g_timezone).c_str());
               id(timezone_text).publish_state(id(g_timezone).c_str());
               ESP_LOGI("timezone", "Restored timezone: %s", id(g_timezone).c_str());
             }
@@ -599,7 +599,7 @@ text:
       lambda: !lambda |-
         id(timezone_text).publish_state(x.c_str()); // update this text component
         id(g_timezone) = std::string(x.c_str()); // store tz in global
-        id(nbs_time).set_timezone(x.c_str()); // set timezone for time
+        # id(nbs_time).set_timezone(x.c_str()); // set timezone for time
         ESP_LOGI("timezone", "Timezone set to: %s", x.c_str()); // log
 
 
